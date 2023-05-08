@@ -1,6 +1,7 @@
 import os
 import sys
 from src.logger import logging
+import numpy as np
 from src.exception import CustomException
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -28,7 +29,8 @@ class DataIngestion:
             housing = fetch_california_housing()
             X = pd.DataFrame(housing.data)
             y = pd.DataFrame(housing.target)
-            housing_df = pd.DataFrame(data = np.c_[X, y], columns=['MedInc','HouseAge','AveRooms','AveBedrms','Population','AveOccup','Latitude','Longitude','MedHouseVal'])
+            
+            df = pd.DataFrame(data = np.c_[X, y], columns=['MedInc','HouseAge','AveRooms','AveBedrms','Population','AveOccup','Latitude','Longitude','MedHouseVal'])
 
             logging.info('Dataset read as pandas Dataframe')
 
